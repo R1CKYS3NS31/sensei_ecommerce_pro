@@ -47,7 +47,6 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
 `;
 const MenuItem = styled.div`
   font-size: 14px;
@@ -63,18 +62,18 @@ export const NavBar = () => {
           <Language>EN</Language>
           <SearchContainer>
             <Input />
-            <Search style={{color:'gray',fontSize:16}}/>
+            <Search style={{ color: "gray", fontSize: 16 }} />
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>Sensei E-commerce</Logo>
+          <Logo>E-commerce</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
             <Badge color="primary" badgeContent={4}>
-              <ShoppingCart/>
+              <ShoppingCart />
             </Badge>
           </MenuItem>
         </Right>
