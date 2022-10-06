@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
 import { useState } from "react";
-import { sliderItems } from "../model/dummyData";
+import { sliderItems } from "../../model/dummyData";
 
 const Container = styled.div`
   width: 100%;

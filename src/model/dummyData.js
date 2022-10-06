@@ -39,3 +39,17 @@ export const categories = [
     title: "Bag",
   },
 ];
+export const popularProducts = [
+  {
+    id: 0,
+    img: "/images/20210917160842_IMG_1346.jpg",
+  },
+  {
+    id: 1,
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 2,
+    img: "/images/20210917160842_IMG_1346.jpg",
+  },
+];

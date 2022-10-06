@@ -1,8 +1,8 @@
 import React from 'react'
-import { Announcement } from '../components/Announcement'
-import { Categories } from '../components/Categories'
-import { NavBar } from '../components/NavBar'
-import { Slider } from '../components/Slider'
+import { Announcement } from '../components/announcement/Announcement'
+import { Categories } from '../components/categories/Categories'
+import { NavBar } from '../components/navBar/NavBar'
+import { Slider } from '../components/slider/Slider'
 
 export const Homepage = () => {
     return (
