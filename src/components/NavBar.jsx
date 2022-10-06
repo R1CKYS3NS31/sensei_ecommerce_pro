@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  height: 60px;
+  height: max-content;
 `;
 
 const Wrapper = styled.div`
@@ -66,7 +66,7 @@ export const NavBar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>E-commerce</Logo>
+          <Logo>Sensei E-commerce</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
