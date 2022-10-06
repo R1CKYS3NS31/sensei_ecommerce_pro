@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 import { ArrowLeftOutlined, ArrowRightOutlined } from "@mui/icons-material";
+import { useState } from "react";
+import { sliderItems } from "../model/dummyData";
 
 const Container = styled.div`
   width: 100%;
@@ -25,10 +27,12 @@ const Arrow = styled.div`
   right: ${(props) => props.direction === "right" && "10px"};
   cursor: pointer;
   opacity: 0.5;
+  z-index: 2;
 `;
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
+  transform: translate(${(props) => props.slideIndex * -100});
 `;
 const Slide = styled.div`
   display: flex;
@@ -68,58 +72,34 @@ const Button = styled.button`
 `;
 
 export const Slider = () => {
-  const handleClick = (direction) => {};
+  const [slideIndex, setSlideIndex] = useState(0);
+  const handleClick = (direction) => {
+    console.log(direction);
+    if (direction === "left") {
+      setSlideIndex(slideIndex > 0 ? slideIndex - 1 : 2);
+    } else {
+      setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+    }
+  };
+
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
-      <Wrapper>
-        <Slide bg="grey">
-          <ImgContainer>
-            <Image src="images/20210917160212_IMG_1338.jpg" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Book</Title>{" "}
-            <Desc>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
-              error aliquid, reiciendis architecto ab ullam nam earum eos, rerum
-              reprehenderit dolorem aperiam velit laboriosam incidunt quod vitae
-              cupiditate inventore quas.
-            </Desc>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="teal">
-          <ImgContainer>
-            <Image src="images/20210917160212_IMG_1338.jpg" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Mask</Title>
-            <Desc>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
-              error aliquid, reiciendis architecto ab ullam nam earum eos, rerum
-              reprehenderit dolorem aperiam velit laboriosam incidunt quod vitae
-              cupiditate inventore quas.
-            </Desc>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
-        <Slide bg="gray">
-          <ImgContainer>
-            <Image src="images/20210917160212_IMG_1338.jpg" />
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Bag</Title>
-            <Desc>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae
-              error aliquid, reiciendis architecto ab ullam nam earum eos, rerum
-              reprehenderit dolorem aperiam velit laboriosam incidunt quod vitae
-              cupiditate inventore quas.
-            </Desc>
-            <Button>Shop Now</Button>
-          </InfoContainer>
-        </Slide>
+      <Wrapper slideIndex={slideIndex}>
+        {sliderItems.map((item, i) => (
+          <Slide key={i} bg={item.bg}>
+            <ImgContainer>
+              <Image src={item.img} />
+            </ImgContainer>
+            <InfoContainer>
+              <Title>{item.title}</Title>
+              <Desc>{item.desc}</Desc>
+              <Button>Shop Now</Button>
+            </InfoContainer>
+          </Slide>
+        ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowRightOutlined />
