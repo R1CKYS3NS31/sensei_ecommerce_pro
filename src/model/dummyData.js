@@ -42,7 +42,7 @@ export const categories = [
 export const popularProducts = [
   {
     id: 0,
-    img: "/images/20210917160842_IMG_1346.jpg",
+    img: "/images/20210917160212_IMG_1338.jpg",
   },
   {
     id: 1,
@@ -50,6 +50,30 @@ export const popularProducts = [
   },
   {
     id: 2,
-    img: "/images/20210917160842_IMG_1346.jpg",
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 3,
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 4,
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 5,
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 6,
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 7,
+    img: "/images/20210917160212_IMG_1338.jpg",
+  },
+  {
+    id: 8,
+    img: "/images/20210917160212_IMG_1338.jpg",
   },
 ];
