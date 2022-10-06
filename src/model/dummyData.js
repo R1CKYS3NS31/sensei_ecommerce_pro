@@ -21,3 +21,21 @@ export const sliderItems = [
     bg: "teal",
   },
 ];
+
+export const categories = [
+  {
+    id: 0,
+    img: "/images/20210917160842_IMG_1346.jpg",
+    title: "Book",
+  },
+  {
+    id: 1,
+    img: "/images/20210917160212_IMG_1338.jpg",
+    title: "Biro",
+  },
+  {
+    id: 2,
+    img: "/images/20210917160842_IMG_1346.jpg",
+    title: "Bag",
+  },
+];
