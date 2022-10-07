@@ -13,7 +13,7 @@ const Title = styled.h1`
   font-size: 70px;
   margin-bottom: 20px;
 `;
-const Description = styled.div`
+const Description = styled.p`
   font-size: 24px;
   font-weight: 300;
   margin-bottom: 20px;
