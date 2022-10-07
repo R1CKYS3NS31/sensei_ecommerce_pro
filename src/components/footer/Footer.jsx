@@ -50,6 +50,7 @@ const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
 `;
+const ContactItem = styled.p``
 
 export const Footer = () => {
   return (
@@ -91,7 +92,12 @@ export const Footer = () => {
           <ListItem>Terms & Conditions</ListItem>
         </List>
       </Center>
-      <Right></Right>
+      <Right>
+        <Title>Contact</Title>
+        <ContactItem>Nakuru Town East, Nakuru, Kenya</ContactItem>
+        <ContactItem>+254705 584 390</ContactItem>
+        <ContactItem>contact@rickysensei.dev</ContactItem>
+      </Right>
     </Container>
   );
 };
