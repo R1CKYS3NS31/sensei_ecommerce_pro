@@ -12,14 +12,44 @@ const Left = styled.div`
 `;
 const Center = styled.div`
   flex: 1;
+  padding: 20px;
 `;
 const Right = styled.div`
   flex: 1;
+  padding: 20px;
 `;
 const Logo = styled.h1``;
-const Desc = styled.p``;
-const SocialContainer = styled.div``;
-const SocialIcon = styled.div``;
+const Desc = styled.p`
+  margin: 20px 0;
+`;
+const SocialContainer = styled.div`
+  display: flex;
+`;
+const SocialIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  background-color: #${(props) => props.color};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+`;
+const Title = styled.h3`
+  margin-bottom: 20px;
+`;
+const List = styled.ul`
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+`;
+const ListItem = styled.li`
+  width: 50%;
+  margin-bottom: 10px;
+`;
 
 export const Footer = () => {
   return (
@@ -33,21 +63,34 @@ export const Footer = () => {
           necessitatibus molestias.
         </Desc>
         <SocialContainer>
-          <SocialIcon>
+          <SocialIcon color="3b5999">
             <Facebook />
           </SocialIcon>
-          <SocialIcon>
+          <SocialIcon color="e4405f">
             <Instagram />
           </SocialIcon>
-          <SocialIcon>
+          <SocialIcon color="55acee">
             <Twitter />
           </SocialIcon>
-          <SocialIcon>
+          <SocialIcon color="e60023">
             <Pinterest />
           </SocialIcon>
         </SocialContainer>
       </Left>
-      <Center></Center>
+      <Center>
+        <Title>Useful Links</Title>
+        <List>
+          <ListItem>Home</ListItem>
+          <ListItem>Cart</ListItem>
+          <ListItem>Man Fashion</ListItem>
+          <ListItem>Woman Fashion</ListItem>
+          <ListItem>Accessories</ListItem>
+          <ListItem>My Account</ListItem>
+          <ListItem>Order Tracking</ListItem>
+          <ListItem>Wishlist</ListItem>
+          <ListItem>Terms & Conditions</ListItem>
+        </List>
+      </Center>
       <Right></Right>
     </Container>
   );
