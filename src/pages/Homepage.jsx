@@ -1,6 +1,7 @@
 import React from 'react'
 import { Announcement } from '../components/announcement/Announcement'
 import { Categories } from '../components/categories/Categories'
+import { Footer } from '../components/footer/Footer'
 import { NavBar } from '../components/navBar/NavBar'
 import { Newsletter } from '../components/newsletter/Newsletter'
 import { Products } from '../components/products/Products'
@@ -15,6 +16,7 @@ export const Homepage = () => {
             <Categories/>
             <Products/>
             <Newsletter/>
+            <Footer/>
         </div>
     )
 }

@@ -6,6 +6,9 @@ const Container = styled.div`
 `;
 const Left = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 `;
 const Center = styled.div`
   flex: 1;
