@@ -10,6 +10,7 @@ const Container = styled.div`
     /* url("https://images.pixels.com/photos/6984661/pixels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") */
       url("images/20210917160842_IMG_1346.jpg"),
     center;
+    background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
