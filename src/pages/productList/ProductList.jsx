@@ -30,8 +30,8 @@ const Title = styled.h1`
 export const ProductList = () => {
   return (
     <Container>
-      <Announcement />
       <NavBar />
+      <Announcement />
       <Title>Dresses</Title>
       <FilterContainer>
         <Filter>

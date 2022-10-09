@@ -10,7 +10,6 @@ import { Slider } from "../components/slider/Slider";
 export const Homepage = () => {
   return (
     <div>
-      {" "}
       <NavBar />
       <Announcement />
       <Slider />
