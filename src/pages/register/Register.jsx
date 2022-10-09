@@ -3,20 +3,52 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(255, 255, 255, 0.5))
-    url("https://images.pixels.com/photos/6984661/pixels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    /* url("https://images.pixels.com/photos/6984661/pixels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") */
+      url("images/20210917160842_IMG_1346.jpg"),
     center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-const Wrapper = styled.div``;
-const Form = styled.form``;
-const Input = styled.input``;
-const Title = styled.h1``;
-const Agreement = styled.span``;
-const Button = styled.button;
+const Wrapper = styled.div`
+  padding: 20px;
+  width: 40%;
+  background-color: white;
+`;
+const Form = styled.form`
+  display: flex;
+  flex-wrap: wrap;
+`;
+const Input = styled.input`
+  flex: 1;
+  min-width: 40%;
+  margin: 20px 10px 0px 0;
+  padding: 10px;
+`;
+const Title = styled.h1`
+  font-size: 24px;
+  font-weight: 300;
+`;
+const Agreement = styled.span`
+  font-size: 12px;
+  margin: 20px 0px;
+`;
+const Button = styled.button`
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: teal;
+  color: white;
+  cursor: pointer;
+`;
 
 export const Register = () => {
   return (
-    <Container>ll
+    <Container>
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form>
