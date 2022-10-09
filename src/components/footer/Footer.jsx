@@ -1,4 +1,12 @@
-import { Facebook, Instagram, Pinterest, Twitter } from "@mui/icons-material";
+import {
+  Facebook,
+  Instagram,
+  MailOutline,
+  Phone,
+  Pinterest,
+  Room,
+  Twitter,
+} from "@mui/icons-material";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -50,7 +58,14 @@ const ListItem = styled.li`
   width: 50%;
   margin-bottom: 10px;
 `;
-const ContactItem = styled.p``
+const ContactItem = styled.p`
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+`;
+const Payment = styled.img`
+  width: 50%;
+`;
 
 export const Footer = () => {
   return (
@@ -94,9 +109,18 @@ export const Footer = () => {
       </Center>
       <Right>
         <Title>Contact</Title>
-        <ContactItem>Nakuru Town East, Nakuru, Kenya</ContactItem>
-        <ContactItem>+254705 584 390</ContactItem>
-        <ContactItem>contact@rickysensei.dev</ContactItem>
+        <ContactItem>
+          <Room style={{ marginRight: "10px" }} /> Nakuru Town East, Nakuru,
+          Kenya
+        </ContactItem>
+        <ContactItem>
+          <Phone style={{ marginRight: "10px" }} /> +254705 584 390
+        </ContactItem>
+        <ContactItem>
+          <MailOutline style={{ marginRight: "10px" }} />{" "}
+          contact@rickysensei.dev
+        </ContactItem>
+        <Payment src="https://i.ibb.co/Qfvn4z6/payment.png" />
       </Right>
     </Container>
   );
