@@ -69,7 +69,7 @@ const AddContainer = styled.div`
 const AmountContainer = styled.div`
   display: flex;
   align-items: center;
-  fw700
+  font-weight: 700;
 `;
 const Amount = styled.span`
   width: 30px;
@@ -87,7 +87,7 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 500;
-  &:hover{
+  &:hover {
     background-color: #f8f4f4;
   }
 `;
