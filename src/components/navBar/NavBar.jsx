@@ -2,9 +2,11 @@ import { Search, ShoppingCart } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
+import { mobile } from "../../responsive";
 
 const Container = styled.div`
   height: max-content;
+  ${mobile({ backGroundColor: "red" })}
 `;
 
 const Wrapper = styled.div`

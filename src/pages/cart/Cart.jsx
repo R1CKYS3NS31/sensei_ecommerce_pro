@@ -102,13 +102,21 @@ const SummaryItem = styled.div`
   margin: 30px 0;
   display: flex;
   justify-content: space-between;
+  font-weight: ${(props) => props.type === "total" && "500"};
+  font-size: ${(props) => props.type === "total" && "24px"};
 `;
 const SummaryTitle = styled.h1`
   font-weight: 200;
 `;
 const SummaryItemText = styled.span``;
 const SummaryItemPrice = styled.span``;
-const Button = styled.button``;
+const Button = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+`;
 
 export const Cart = () => {
   return (
@@ -194,8 +202,8 @@ export const Cart = () => {
               <SummaryItemText>Shipping Discount</SummaryItemText>
               <SummaryItemPrice>Ksh. -5.00</SummaryItemPrice>
             </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText type="total">Total</SummaryItemText>
+            <SummaryItem type="total">
+              <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>Ksh. 800.00</SummaryItemPrice>
             </SummaryItem>
             <Button>CHECKOUT NOW</Button>
