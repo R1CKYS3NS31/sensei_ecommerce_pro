@@ -6,7 +6,8 @@ import { mobile } from "../../responsive";
 
 const Container = styled.div`
   height: max-content;
-  ${mobile({ backGroundColor: "red" })}
+  /* height: 60px; */
+  ${mobile({ backgroundColor: "red" })}
 `;
 
 const Wrapper = styled.div`
