@@ -1,3 +1,4 @@
+import { Add, Remove } from "@mui/icons-material";
 import styled from "styled-components";
 import { Announcement } from "../../components/announcement/Announcement";
 import { Footer } from "../../components/footer/Footer";
@@ -39,9 +40,7 @@ const Bottom = styled.div`
 const Info = styled.div`
   flex: 3;
 `;
-const Summary = styled.div`
-  flex: 1;
-`;
+
 const Product = styled.div`
   display: flex;
   justify-content: space-between;
@@ -61,11 +60,55 @@ const Details = styled.div`
 `;
 const PriceDetail = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 const ProductName = styled.span``;
 const ProductID = styled.span``;
-const ProductColor = styled.div``;
+const ProductColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+`;
 const ProductSize = styled.span``;
+const ProductAmountContainer = styled.div`
+  display: flex;
+  margin: 20px;
+  align-items: center;
+`;
+const ProductAmount = styled.div`
+  font-size: 24px;
+  margin: 5px;
+`;
+const ProductPrice = styled.div`
+  font-size: 30px;
+  font-weight: 200;
+`;
+const Hr = styled.hr`
+  background-color: #eee;
+  border: none;
+  height: 1px;
+`;
+const Summary = styled.div`
+  flex: 1;
+  border: 0.5px solid lightgray;
+  border-radius: 10px;
+  padding: 20px;
+`;
+const SummaryItem = styled.div`
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+`;
+const SummaryTitle = styled.h1`
+  font-weight: 200;
+`;
+const SummaryItemText = styled.span``;
+const SummaryItemPrice = styled.span``;
+const Button = styled.button``;
 
 export const Cart = () => {
   return (
@@ -95,16 +138,68 @@ export const Cart = () => {
                   <ProductID>
                     <b>ID:</b>987654567
                   </ProductID>
-                  <ProductColor />
+                  <ProductColor color="black" />
                   <ProductSize>
                     <b>Size:</b>38.5
                   </ProductSize>
                 </Details>
               </ProductDetail>
-              <PriceDetail>price</PriceDetail>
+              <PriceDetail>
+                <ProductAmountContainer>
+                  <Add />
+                  <ProductAmount>2</ProductAmount>
+                  <Remove />
+                </ProductAmountContainer>
+                <ProductPrice>Ksh. 30.00</ProductPrice>
+              </PriceDetail>
+            </Product>
+            <Hr />
+            <Product>
+              <ProductDetail>
+                <Image src="/images/20210917160842_IMG_1346.jpg" />
+                <Details>
+                  <ProductName>
+                    <b>Product:</b> HOODIE
+                  </ProductName>
+                  <ProductID>
+                    <b>ID:</b>987654567
+                  </ProductID>
+                  <ProductColor color="gray" />
+                  <ProductSize>
+                    <b>Size:</b>L
+                  </ProductSize>
+                </Details>
+              </ProductDetail>
+              <PriceDetail>
+                <ProductAmountContainer>
+                  <Add />
+                  <ProductAmount>2</ProductAmount>
+                  <Remove />
+                </ProductAmountContainer>
+                <ProductPrice>Ksh. 440.00</ProductPrice>
+              </PriceDetail>
             </Product>
           </Info>
-          <Summary>Summary</Summary>
+          <Summary>
+            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
+            <SummaryItem>
+              <SummaryItemText>Subtotal</SummaryItemText>
+              <SummaryItemPrice>Ksh. 800.00</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Estimated Shipping</SummaryItemText>
+              <SummaryItemPrice>Ksh. 500.00</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText>Shipping Discount</SummaryItemText>
+              <SummaryItemPrice>Ksh. -5.00</SummaryItemPrice>
+            </SummaryItem>
+            <SummaryItem>
+              <SummaryItemText type="total">Total</SummaryItemText>
+              <SummaryItemPrice>Ksh. 800.00</SummaryItemPrice>
+            </SummaryItem>
+            <Button>CHECKOUT NOW</Button>
+          </Summary>
         </Bottom>
       </Wrapper>
       <Footer />
