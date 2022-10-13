@@ -12,7 +12,7 @@ import { mobile } from "../../responsive";
 
 const Container = styled.div`
   display: flex;
-  ${mobile({ flexDirection: "none" })}
+  ${mobile({ flexDirection: "column" })}
 `;
 const Left = styled.div`
   flex: 1;
@@ -28,6 +28,7 @@ const Center = styled.div`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  ${mobile({ backgroundColor: "#eee" })}
 `;
 const Logo = styled.h1``;
 const Desc = styled.p`
