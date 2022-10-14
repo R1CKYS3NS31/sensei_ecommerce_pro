@@ -5,5 +5,4 @@ router.get('/users', (req,res)=>{
     console.log('user successfull!');
 })
 
-
 module.exports=router
