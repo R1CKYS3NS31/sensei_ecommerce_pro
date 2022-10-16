@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
     console.error(error);
   }
 });
-app.use("/api/user", userRoute);
+app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 
 const server = app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
