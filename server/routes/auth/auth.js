@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const user = require("../../model/user/user");
+const user = require("../../model/user/User");
 const CryptoJS = require("crypto-js");
-const { findOne } = require("../../model/user/user");
+const User = require("../../model/user/User");
 
 // REGISTER
 router.post("/register", async (req, res) => {
@@ -27,8 +27,8 @@ router.post("/register", async (req, res) => {
 // LOGIN
 router.post("/login", async (req, res) => {
   try {
-    const user = await user.findOne({ username: req.body.username });
-    !user && res.status(401).json("wrong username or password!");
+    const user = await User.findOne({ username: req.body.username });
+    !user && res.status(401).json("wrong (username) or password!");
     var decrypted = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
     const password = decrypted.toString(CryptoJS.enc.Utf8);
     password !== req.body.password && res.status(401).json("wrong password");
