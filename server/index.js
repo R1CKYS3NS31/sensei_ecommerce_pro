@@ -3,7 +3,7 @@ const cors = require("cors");
 const { mongoose } = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user/user");
-const authRoute = require("./routes/auth/auth")
+const authRoute = require("./routes/auth/auth");
 
 dotenv.config();
 
@@ -34,4 +34,3 @@ const server = app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
   const port = server.address().port;
   console.log(`server is listening at http://${host}:${port}`);
 });
-
