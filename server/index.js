@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const userRoute = require("./routes/user/user");
 const authRoute = require("./routes/auth/auth");
 
-dotenv.config();
+dotenv.config(); // create your .env file and add MONGO_URL, PORT, PASS_SEC
 
 mongoose
   .connect(process.env.MONGO_URL)
