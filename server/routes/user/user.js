@@ -10,9 +10,11 @@ router.get("/", (req, res) => {
   res.send("user successfull");
   console.log("user successfull!");
 });
+
+// Update User
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
-    var encrypted = CryptoJS.AES.encrypt(
+    req.body.password = CryptoJS.AES.encrypt(
       req.body.password,
       process.env.PASS_SEC
     ).toString();
