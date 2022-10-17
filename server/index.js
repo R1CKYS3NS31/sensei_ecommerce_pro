@@ -4,6 +4,7 @@ const { mongoose } = require("mongoose");
 const dotenv = require("dotenv");
 const userRoute = require("./routes/user/user");
 const authRoute = require("./routes/auth/auth");
+const productRoute = require("./routes/product/product");
 
 dotenv.config(); // create your .env file and add MONGO_URL, PORT, PASS_SEC
 
@@ -28,6 +29,7 @@ app.get("/", (req, res) => {
 });
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/products", productRoute);
 
 const server = app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
   const host = server.address().address;
