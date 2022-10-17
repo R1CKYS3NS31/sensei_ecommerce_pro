@@ -1,6 +1,5 @@
 const {
   verifyTokenAndAdmin,
-  verifyTokenAndAuthorization,
 } = require("../../utils/verifyToken");
 const Product = require("../../models/product/Product");
 
@@ -82,34 +81,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-// // Get user stats
-// router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-//   const date = new Date();
-//   const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-
-//   try {
-//     const data = await User.aggregate([
-//       {
-//         $match: {
-//           createdAt: { $gte: lastYear },
-//         },
-//       },
-//       {
-//         $project: {
-//           month: { $month: "$createdAt" },
-//         },
-//       },
-//       {
-//         $group: {
-//           _id: "$month",
-//           total: { $sum: 1 },
-//         },
-//       },
-//     ]);
-//     res.status(200).json(data)
-//   } catch (error) {
-//     res.status(500).json(error);
-//     console.error(error);
-//   }
-// });
 module.exports = router;
