@@ -32,7 +32,8 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/products", productRoute);
-app.use("/api/cart", cartRoute), app.use("/api/order", orderRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
 
 const server = app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
   const host = server.address().address;
