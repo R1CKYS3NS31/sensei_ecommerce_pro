@@ -10,7 +10,7 @@ router.post("/register", async (req, res) => {
     process.env.PASS_SEC
   ).toString();
 
-  const newUser = new user({
+  const newUser = new User({
     username: req.body.username,
     email: req.body.email,
     password: encrypted,
