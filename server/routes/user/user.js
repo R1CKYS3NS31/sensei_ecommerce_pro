@@ -7,11 +7,6 @@ const {
 
 const router = require("express").Router();
 
-router.get("/", (req, res) => {
-  res.send("user successfull");
-  console.log("user successfull!");
-});
-
 // Update User
 router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
   if (req.body.password) {
@@ -52,6 +47,17 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
     const user = await User.findById(req.params.id);
     const { password, ...others } = user._doc;
     res.status(200).json(others);
+  } catch (error) {
+    res.status(500).json(error);
+    console.error(error);
+  }
+});
+
+// get all users
+router.get("/", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json(error);
     console.error(error);
