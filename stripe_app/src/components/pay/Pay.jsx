@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 
 const KEY =
@@ -6,6 +7,7 @@ const KEY =
 
 export const Pay = () => {
   const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
 
   const onToken = (token) => {
     setStripeToken(token);
@@ -21,6 +23,7 @@ export const Pay = () => {
         }),
       });
       const payment = await res.json();
+      navigate("/success", { replace: true }); // ricky has bugs
       console.log(payment);
     } catch (error) {
       console.error(error);
@@ -39,33 +42,37 @@ export const Pay = () => {
         justifyContent: "center",
       }}
     >
-      <StripeCheckout
-        name="Sensei E-commerce"
-        image="/images/20210917160842_IMG_1346.jpg"
-        billingAddress
-        shippingAddress
-        zipCode
-        description="Your total is Ksh. 200"
-        amount={20000}
-        token={onToken}
-        stripeKey={KEY}
-        currency={"KES"}
-      >
-        <button
-          style={{
-            border: "none",
-            width: 120,
-            borderRadius: 5,
-            padding: "20px",
-            backgroundColor: "black",
-            color: "white",
-            fontWeight: "600",
-            cursor: "pointer",
-          }}
+      {stripeToken ? (
+        <span>Processing. Please wait...</span>
+      ) : (
+        <StripeCheckout
+          name="Sensei E-commerce"
+          image="/images/20210917160842_IMG_1346.jpg"
+          billingAddress
+          shippingAddress
+          zipCode
+          description="Your total is Ksh. 200"
+          amount={20000}
+          token={onToken}
+          stripeKey={KEY}
+          currency={"KES"}
         >
-          Pay Now
-        </button>
-      </StripeCheckout>
+          <button
+            style={{
+              border: "none",
+              width: 120,
+              borderRadius: 5,
+              padding: "20px",
+              backgroundColor: "black",
+              color: "white",
+              fontWeight: "600",
+              cursor: "pointer",
+            }}
+          >
+            Pay Now
+          </button>
+        </StripeCheckout>
+      )}
     </div>
   );
 };
