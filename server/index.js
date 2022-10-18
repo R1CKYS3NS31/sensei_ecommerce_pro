@@ -7,6 +7,7 @@ const authRoute = require("./routes/auth/auth");
 const productRoute = require("./routes/product/product");
 const cartRoute = require("./routes/cart/cart");
 const orderRoute = require("./routes/order/order");
+const stripeRoute = require("./routes/stripe/stripe");
 
 dotenv.config(); // create your .env file and add MONGO_URL, PORT, PASS_SEC
 
@@ -34,6 +35,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/products", productRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
+app.use("/api/checkout", stripeRoute);
 
 const server = app.listen(process.env.PORT || 5000, "0.0.0.0", () => {
   const host = server.address().address;
