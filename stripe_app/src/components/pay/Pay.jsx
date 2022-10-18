@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import StripeCheckout from "react-stripe-checkout";
 
 const KEY =
-  "pk_test_51LYmN6GRVcB5JNrqaOKJMhNBVdnUzszbsILTLffPwqsRIFiEUnHAda7VZBCBPZ9eH5b0YP1F2F02WsZSZPIPp76R00yWppJSAJ";
+  "pk_test_51LYmN6GRVcB5JNrq4XYU4MxSLNtxrXOt3xu79oUIyV71TMhbmIWYlzupWVfdbbUfi4WQ7hzrOppsU2G9L0qvtDI300EUCda3dR";
 
 export const Pay = () => {
   const [stripeToken, setStripeToken] = useState(null);
@@ -49,7 +49,7 @@ export const Pay = () => {
         amount={20000}
         token={onToken}
         stripeKey={KEY}
-        currency={"usd"}
+        currency={"KES"}
       >
         <button
           style={{
