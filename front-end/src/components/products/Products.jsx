@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { popularProducts } from "../../model/dummyData";
 import { Product } from "./Product";
 
 const Container = styled.div`
@@ -22,8 +21,8 @@ export const Products = ({ cat, filters, sort }) => {
             ? `http://0.0.0.0:9000/api/products?category=${cat}`
             : "http://0.0.0.0:9000/api/products"
         );
-        const productsJson = await res.json()
-        setProducts(productsJson)
+        const productsJson = await res.json();
+        setProducts(productsJson);
       } catch (error) {
         console.error(error);
       }
@@ -31,14 +30,23 @@ export const Products = ({ cat, filters, sort }) => {
     getProducts();
   }, [cat]);
 
+  // filtered products
   useEffect(() => {
-    cat&&setFilteredProducts(
-      products.filter(item=>)
-    )
-  }, [products,cat,filters])
+    cat
+      ? setFilteredProducts(
+          products.filter((item) =>
+            Object.entries(filters).every(([key, value]) =>
+            console.log({key,value}),
+              // item[key].includes(value)
+            )
+          )
+        )
+      : setFilteredProducts(products);
+  }, [products, cat, filters]);
+  
   return (
     <Container>
-      {popularProducts.map((item, i) => (
+      {filteredProducts.map((item, i) => (
         <Product key={i} item={item} />
       ))}
     </Container>

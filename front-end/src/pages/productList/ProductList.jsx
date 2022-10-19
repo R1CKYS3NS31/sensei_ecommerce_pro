@@ -34,18 +34,30 @@ const Title = styled.h1`
 `;
 
 export const ProductList = () => {
+  const colorOptions = [
+    { value: "white" },
+    { value: "green" },
+    { value: "yellow" },
+    { value: "red" },
+    { value: "blue" },
+    { value: "black" },
+  ];
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
-  const [sort, setSort] = useState("newest");
+  const [colorFilter, setColorFilter] = useState({})
+  const [sort, setSort] = useState({});
+  const [sizeFilter, setsizeFilter] = useState({})
 
   const handleFilters = (e) => {
-    const value = e.target.value;
+    e.preventDefault()
     setFilters({
       ...filters,
-      [e.target.value]: value // ricky has bags
-    });
+      {colorFilter.color,sizeFilter}
+    })
   };
+  console.log(filters);
+  
 
   return (
     <Container>
@@ -55,16 +67,14 @@ export const ProductList = () => {
       <FilterContainer>
         <Filter>
           <Filtertext>Filter Products:</Filtertext>
-          <Select name="color" onChange={handleFilters}>
-            <Option disabled>Color</Option>
-            <Option>White</Option>
-            <Option>Black</Option>
-            <Option>Red</Option>
-            <Option>Blue</Option>
-            <Option>Yellow</Option>
-            <Option>Green</Option>
+          <Select name="color" onChange={e=>(setColorFilter({color:e.target.value}),handleFilters(e))}>
+            {colorOptions.map((color, i) => (
+              <Option key={i} value={color.value}>
+                {color.value}
+              </Option>
+            ))}
           </Select>
-          <Select name="size" onChange={handleFilters}>
+          <Select name="size" onChange={e=>setsizeFilter({size:e.target.value})}>
             <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>
@@ -75,7 +85,7 @@ export const ProductList = () => {
         </Filter>
         <Filter>
           <Filtertext>Sort Products:</Filtertext>
-          <Select onChange={(e) => setSort(e.target.value)}>
+          <Select onChange={(e) => setSort({ sort: e.target.value })}>
             <Option value={"newest"} defaultValue>
               Newest
             </Option>
