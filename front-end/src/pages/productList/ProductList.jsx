@@ -43,10 +43,9 @@ export const ProductList = () => {
     const value = e.target.value;
     setFilters({
       ...filters,
-      [e.target.value]: value,
+      [e.target.value]: value // ricky has bags
     });
   };
-  console.log(filters);
 
   return (
     <Container>
@@ -76,14 +75,16 @@ export const ProductList = () => {
         </Filter>
         <Filter>
           <Filtertext>Sort Products:</Filtertext>
-          <Select>
-            <Option selected>Newest</Option>
-            <Option>Price (asc)</Option>
-            <Option>Price (desc)</Option>
+          <Select onChange={(e) => setSort(e.target.value)}>
+            <Option value={"newest"} defaultValue>
+              Newest
+            </Option>
+            <Option value={"esc"}>Price (asc)</Option>
+            <Option value={"desc"}>Price (desc)</Option>
           </Select>
         </Filter>
       </FilterContainer>
-      <Products />
+      <Products cat={cat} filters={filters} sort={sort} />
       <Newsletter />
       <Footer />
     </Container>
