@@ -5,6 +5,8 @@ import { Products } from "../../components/products/Products";
 import { Newsletter } from "../../components/newsletter/Newsletter";
 import { Footer } from "../../components/footer/Footer";
 import { mobile } from "../../responsive";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const Container = styled.div``;
 const FilterContainer = styled.div`
@@ -13,7 +15,7 @@ const FilterContainer = styled.div`
 `;
 const Filter = styled.div`
   margin: 20px;
-  ${mobile({ width: "0px 20px",display:'flex',flexDirection:'column' })}
+  ${mobile({ width: "0px 20px", display: "flex", flexDirection: "column" })}
 `;
 const Filtertext = styled.span`
   font-size: 20px;
@@ -32,6 +34,20 @@ const Title = styled.h1`
 `;
 
 export const ProductList = () => {
+  const location = useLocation();
+  const cat = location.pathname.split("/")[2];
+  const [filters, setFilters] = useState({});
+  const [sort, setSort] = useState("newest");
+
+  const handleFilters = (e) => {
+    const value = e.target.value;
+    setFilters({
+      ...filters,
+      [e.target.value]: value,
+    });
+  };
+  console.log(filters);
+
   return (
     <Container>
       <NavBar />
@@ -40,10 +56,8 @@ export const ProductList = () => {
       <FilterContainer>
         <Filter>
           <Filtertext>Filter Products:</Filtertext>
-          <Select>
-            <Option disabled selected>
-              Color
-            </Option>
+          <Select name="color" onChange={handleFilters}>
+            <Option disabled>Color</Option>
             <Option>White</Option>
             <Option>Black</Option>
             <Option>Red</Option>
@@ -51,10 +65,8 @@ export const ProductList = () => {
             <Option>Yellow</Option>
             <Option>Green</Option>
           </Select>
-          <Select>
-            <Option disabled selected>
-              Size
-            </Option>
+          <Select name="size" onChange={handleFilters}>
+            <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>
             <Option>M</Option>
