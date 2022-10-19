@@ -7,17 +7,15 @@ import { Homepage } from "./pages/Homepage";
 import { ProductList } from "./pages/productList/ProductList";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 function App() {
-  // return <Homepage />
-  //   return <ProductList/>
-  //   return <Product/>
-  // return <Register/>
-  // return <Login/>
-  // return <Cart/>
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Homepage />} exact></Route>{" "}
-        <Route path={"/products"} element={<ProductList />}></Route>
+        <Route path={"/"} element={<Homepage />} exact></Route>{" "}
+        <Route path={"/products/:category"} element={<ProductList />}></Route>
+        <Route path={"/product/:id"} element={<Product />}></Route>
+        <Route path={"/cart"} element={<Cart />}></Route>
+        <Route path={"/login"} element={<Login />}></Route>
+        <Route path={"/register"} element={<Register />}></Route>
         {/* none existing route */}
         <Route
           path="*"
@@ -29,7 +27,7 @@ function App() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                flexDirection:'column'
+                flexDirection: "column",
               }}
             >
               <h1>There's nothing here!</h1>
@@ -47,7 +45,7 @@ function App() {
                     cursor: "pointer",
                   }}
                 >
-                 Go Back Home
+                  Go Back Home
                 </button>
               </Link>
             </main>
