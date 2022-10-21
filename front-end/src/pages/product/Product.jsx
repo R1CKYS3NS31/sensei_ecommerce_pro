@@ -7,7 +7,7 @@ import { Footer } from "../../components/footer/Footer";
 import { NavBar } from "../../components/navBar/NavBar";
 import { Newsletter } from "../../components/newsletter/Newsletter";
 import { mobile } from "../../responsive";
-import { BASE_URL, publicRequest } from "../../utils/requestMethods";
+import { BASE_URL } from "../../utils/requestMethods";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -124,32 +124,25 @@ export const Product = () => {
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>DEnim Jumpsuit</Title>
-          <Desc>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore,
-            fuga ut eligendi ea quas explicabo architecto ex doloremque dolores
-            saepe facere esse fugiat. Laborum ipsam dicta natus maiores ex.
-            Ipsam?
-          </Desc>
-          <Price>Ksh. 500</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price>Kes {product.price}.00</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              <FilterTitle>Color</FilterTitle> // ricky has bugs
+              {/* {product.color.map((colr) => (
+                <FilterColor key={colr} color={colr} />
+              ))} */}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+                {/* {product.size.map((size, i) => (
+                  <FilterSizeOption key={i}>{size}</FilterSizeOption>
+                ))} */}
               </FilterSize>
             </Filter>
           </FilterContainer>
