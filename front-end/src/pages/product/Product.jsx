@@ -106,6 +106,7 @@ export const Product = () => {
   const id = location.pathname.split("/")[2];
 
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -117,7 +118,14 @@ export const Product = () => {
     };
     getProduct();
   }, [id]);
-  console.log(product);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
   return (
     <Container>
       <NavBar />
@@ -132,25 +140,25 @@ export const Product = () => {
           <Price>Kes {product.price}.00</Price>
           <FilterContainer>
             <Filter>
-              <FilterTitle>Color</FilterTitle> // ricky has bugs
-              {/* {product.color.map((colr) => (
+              <FilterTitle>Color</FilterTitle>
+              {product.color?.map((colr) => (
                 <FilterColor key={colr} color={colr} />
-              ))} */}
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
-                {/* {product.size.map((size, i) => (
+                {product.size?.map((size, i) => (
                   <FilterSizeOption key={i}>{size}</FilterSizeOption>
-                ))} */}
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
-              <Amount>1</Amount>
-              <Add />
+              <Remove onClick={() => handleQuantity("dec")} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
             <Button>ADD TO CART</Button>
           </AddContainer>
