@@ -45,19 +45,17 @@ export const ProductList = () => {
   const location = useLocation();
   const cat = location.pathname.split("/")[2];
   const [filters, setFilters] = useState({});
-  const [colorFilter, setColorFilter] = useState({})
   const [sort, setSort] = useState({});
-  const [sizeFilter, setsizeFilter] = useState({})
 
   const handleFilters = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+    const value = e.target.value;
     setFilters({
       ...filters,
-      {colorFilter.color,sizeFilter}
-    })
+      [e.target.name]: value,
+    });
   };
   console.log(filters);
-  
 
   return (
     <Container>
@@ -67,14 +65,17 @@ export const ProductList = () => {
       <FilterContainer>
         <Filter>
           <Filtertext>Filter Products:</Filtertext>
-          <Select name="color" onChange={e=>(setColorFilter({color:e.target.value}),handleFilters(e))}>
+          <Select name="color" onChange={handleFilters}>
             {colorOptions.map((color, i) => (
               <Option key={i} value={color.value}>
                 {color.value}
               </Option>
             ))}
           </Select>
-          <Select name="size" onChange={e=>setsizeFilter({size:e.target.value})}>
+          <Select
+            name="size"
+            onChange={handleFilters}
+          >
             <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>

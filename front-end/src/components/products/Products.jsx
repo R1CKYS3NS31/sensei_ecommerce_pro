@@ -36,8 +36,7 @@ export const Products = ({ cat, filters, sort }) => {
       ? setFilteredProducts(
           products.filter((item) =>
             Object.entries(filters).every(([key, value]) =>
-            console.log({key,value}),
-              // item[key].includes(value)
+              item[key].includes(value)
             )
           )
         )
