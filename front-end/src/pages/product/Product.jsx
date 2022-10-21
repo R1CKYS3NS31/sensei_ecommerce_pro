@@ -1,16 +1,19 @@
 import { Add, Remove } from "@mui/icons-material";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Announcement } from "../../components/announcement/Announcement";
 import { Footer } from "../../components/footer/Footer";
 import { NavBar } from "../../components/navBar/NavBar";
 import { Newsletter } from "../../components/newsletter/Newsletter";
 import { mobile } from "../../responsive";
+import { BASE_URL, publicRequest } from "../../utils/requestMethods";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  ${mobile({ padding: "10px", flexDirection:'column' })}
+  ${mobile({ padding: "10px", flexDirection: "column" })}
 `;
 const ImgContainer = styled.div`
   flex: 1;
@@ -99,6 +102,22 @@ const Button = styled.button`
 `;
 
 export const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+
+  const [product, setProduct] = useState({});
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await fetch(`${BASE_URL}/products/find/${id}`);
+        setProduct(await res.json());
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getProduct();
+  }, [id]);
+  console.log(product);
   return (
     <Container>
       <NavBar />
