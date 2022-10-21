@@ -42,12 +42,29 @@ export const Products = ({ cat, filters, sort }) => {
         )
       : setFilteredProducts(products);
   }, [products, cat, filters]);
-  
+
+  useEffect(() => {
+    // ricky has not tested
+    if (sort === "newest") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
+      );
+    } else if (sort === "asc") {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => a.price - b.price)
+      );
+    } else {
+      setFilteredProducts((prev) =>
+        [...prev].sort((a, b) => b.price - a.price)
+      );
+    }
+  }, [sort]);
+
   return (
     <Container>
-      {filteredProducts.map((item, i) => (
-        <Product key={i} item={item} />
-      ))}
+      {cat
+        ? filteredProducts.map((item) => <Product key={item.id} item={item} />)
+        : products.map((item) => <Product key={item.id} item={item} />)}
     </Container>
   );
 };

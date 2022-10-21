@@ -55,7 +55,6 @@ export const ProductList = () => {
       [e.target.name]: value,
     });
   };
-  console.log(filters);
 
   return (
     <Container>
@@ -72,10 +71,7 @@ export const ProductList = () => {
               </Option>
             ))}
           </Select>
-          <Select
-            name="size"
-            onChange={handleFilters}
-          >
+          <Select name="size" onChange={handleFilters}>
             <Option disabled>Size</Option>
             <Option>XS</Option>
             <Option>S</Option>
