@@ -136,7 +136,12 @@ export const Product = () => {
   const handleCartClick = () => {
     // update cart
     dispatch(
-      addProduct({ product, quantity, price: product.price * quantity })
+      addProduct({
+        ...product,
+        quantity,
+        color,
+        size,
+      })
     );
   };
   return (

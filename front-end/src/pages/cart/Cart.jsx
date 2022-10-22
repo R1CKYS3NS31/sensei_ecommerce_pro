@@ -1,4 +1,5 @@
 import { Add, Remove } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Announcement } from "../../components/announcement/Announcement";
 import { Footer } from "../../components/footer/Footer";
@@ -30,7 +31,8 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 const TopTexts = styled.div`
-${mobile({ display: "none" })}`;
+  ${mobile({ display: "none" })}
+`;
 const TopText = styled.span`
   text-decoration: underline;
   cursor: pointer;
@@ -126,6 +128,7 @@ const Button = styled.button`
 `;
 
 export const Cart = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <Container>
       <NavBar />
@@ -143,57 +146,40 @@ export const Cart = () => {
         </Top>
         <Bottom>
           <Info>
-            <Product>
-              <ProductDetail>
-                <Image src="/images/20210917160212_IMG_1338.jpg" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> JESSIE THUNDER SHOES
-                  </ProductName>
-                  <ProductID>
-                    <b>ID:</b>987654567
-                  </ProductID>
-                  <ProductColor color="black" />
-                  <ProductSize>
-                    <b>Size:</b>38.5
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>Ksh. 30.00</ProductPrice>
-              </PriceDetail>
-            </Product>
-            <Hr />
-            <Product>
-              <ProductDetail>
-                <Image src="/images/20210917160842_IMG_1346.jpg" />
-                <Details>
-                  <ProductName>
-                    <b>Product:</b> HOODIE
-                  </ProductName>
-                  <ProductID>
-                    <b>ID:</b>987654567
-                  </ProductID>
-                  <ProductColor color="gray" />
-                  <ProductSize>
-                    <b>Size:</b>L
-                  </ProductSize>
-                </Details>
-              </ProductDetail>
-              <PriceDetail>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>2</ProductAmount>
-                  <Remove />
-                </ProductAmountContainer>
-                <ProductPrice>Ksh. 440.00</ProductPrice>
-              </PriceDetail>
-            </Product>
+            {cart.products.map((product) => (
+              <div className="" key={product._id}>
+                <Product>
+                  <ProductDetail>
+                    <Image src={product.img} />
+                    <Details>
+                      <ProductName>
+                        <b>Product:</b> {product.title.toUpperCase()}
+                      </ProductName>
+                      <ProductID>
+                        <b>ID:</b>
+                        {product._id}
+                      </ProductID>
+                      <ProductColor color={product.color} />
+                      <ProductSize>
+                        <b>Size:</b>
+                        {product.size}
+                      </ProductSize>
+                    </Details>
+                  </ProductDetail>
+                  <PriceDetail>
+                    <ProductAmountContainer>
+                      <Add />
+                      <ProductAmount>{product.quantity}</ProductAmount>
+                      <Remove />
+                    </ProductAmountContainer>
+                    <ProductPrice>
+                      KES {product.price * product.quantity}.00
+                    </ProductPrice>
+                  </PriceDetail>
+                </Product>
+                <Hr />
+              </div>
+            ))}
           </Info>
           <Summary>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
