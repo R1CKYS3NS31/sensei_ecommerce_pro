@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
     console.error(error);
   }
 });
+
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/products", productRoute);

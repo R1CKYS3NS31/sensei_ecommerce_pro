@@ -8,6 +8,8 @@ import { NavBar } from "../../components/navBar/NavBar";
 import { Newsletter } from "../../components/newsletter/Newsletter";
 import { mobile } from "../../responsive";
 import { BASE_URL } from "../../utils/requestMethods";
+import { addProduct } from "../../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -109,6 +111,8 @@ export const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -129,10 +133,12 @@ export const Product = () => {
     }
   };
 
-  const handleCartClick=()=>{
+  const handleCartClick = () => {
     // update cart
-console.log('add to cart');
-  }
+    dispatch(
+      addProduct({ product, quantity, price: product.price * quantity })
+    );
+  };
   return (
     <Container>
       <NavBar />
@@ -149,14 +155,23 @@ console.log('add to cart');
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {product.color?.map((colr) => (
-                <FilterColor key={colr} color={colr} onClick={()=>setColor(colr)}/>
+                <FilterColor
+                  key={colr}
+                  color={colr}
+                  onClick={() => setColor(colr)}
+                />
               ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
               <FilterSize>
                 {product.size?.map((size, i) => (
-                  <FilterSizeOption key={i} onChange={(e)=>setSize(e.target.value)}>{size}</FilterSizeOption>
+                  <FilterSizeOption
+                    key={i}
+                    onChange={(e) => setSize(e.target.value)}
+                  >
+                    {size}
+                  </FilterSizeOption>
                 ))}
               </FilterSize>
             </Filter>
