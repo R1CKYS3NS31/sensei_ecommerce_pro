@@ -157,13 +157,13 @@ export const Cart = () => {
           }),
         });
         const payment = await res.json();
-        navigate("/", { replace: true });
+        navigate("/success", { replace: true, data: payment });
         console.log(payment);
       } catch (error) {
         console.error(error);
       }
     };
-    makeRequest();
+    stripeToken && makeRequest();
   }, [stripeToken, cart.total, navigate]);
 
   return (
