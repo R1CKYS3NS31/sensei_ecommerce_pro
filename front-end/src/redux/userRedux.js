@@ -12,10 +12,12 @@ const userSlice = createSlice({
       state.isFetching = true;
     },
     loginSuccess: (state, action) => {
-      (state.isFetching = false), (state.currentUser = action.payload);
+      state.isFetching = false;
+      state.currentUser = action.payload;
     },
     loginFailue: (state) => {
-      (state.isFetching = false), (state.error = true);
+      state.isFetching = false;
+      state.error = true;
     },
   },
 });
