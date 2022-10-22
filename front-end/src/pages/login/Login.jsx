@@ -1,5 +1,6 @@
+import { useState } from "react";
 import styled from "styled-components";
-import {mobile} from '../../responsive'
+import { mobile } from "../../responsive";
 
 const Container = styled.div`
   width: 100vw;
@@ -53,14 +54,27 @@ const Link = styled.a`
 `;
 
 export const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleClick = (e)=>{
+    // login
+    e.preventDefault()
+  }
   return (
     <Container>
       <Wrapper>
         <Title>SIGN IN</Title>
         <Form>
-          <Input placeholder="username" />
-          <Input placeholder="password" />
-          <Button>lOGIN</Button>
+          <Input
+            placeholder="username"
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Input
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <Button onClick={handleClick}>lOGIN</Button>
           <Link>Do not remember the password?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>
