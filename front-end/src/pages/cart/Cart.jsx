@@ -131,6 +131,9 @@ const Button = styled.button`
   background-color: black;
   color: white;
   font-weight: 600;
+  border: none;
+  border-radius: 5;
+  cursor: pointer;
 `;
 
 export const Cart = () => {
@@ -161,7 +164,7 @@ export const Cart = () => {
       }
     };
     makeRequest();
-  }, [stripeToken]);
+  }, [stripeToken, cart.total, navigate]);
 
   return (
     <Container>
@@ -233,7 +236,6 @@ export const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>Ksh. 800.00</SummaryItemPrice>
             </SummaryItem>
-            {/* <Button>CHECKOUT NOW</Button> */}
             {stripeToken ? (
               <span>Processing. Please wait...</span>
             ) : (
@@ -249,7 +251,8 @@ export const Cart = () => {
                 stripeKey={KEY}
                 currency={"KES"}
               >
-                <button
+                <Button>CHECKOUT NOW</Button>
+                {/* <button
                   style={{
                     border: "none",
                     width: 120,
@@ -262,7 +265,7 @@ export const Cart = () => {
                   }}
                 >
                   Pay Now
-                </button>
+                </button> */}
               </StripeCheckout>
             )}
           </Summary>
