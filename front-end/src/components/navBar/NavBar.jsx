@@ -3,6 +3,7 @@ import { Badge } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   height: max-content;
@@ -64,6 +65,8 @@ const MenuItem = styled.div`
 `;
 
 export const NavBar = () => {
+  const cartQuantity = useSelector((state) => state.cart.quantity);
+
   return (
     <Container>
       <Wrapper>
@@ -81,7 +84,7 @@ export const NavBar = () => {
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
           <MenuItem>
-            <Badge color="primary" badgeContent={4}>
+            <Badge color="primary" badgeContent={cartQuantity}>
               <ShoppingCart />
             </Badge>
           </MenuItem>
