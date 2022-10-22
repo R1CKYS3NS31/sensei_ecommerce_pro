@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StripeCheckout from "react-stripe-checkout";
 
-const KEY =
-  "pk_test_51LYmN6GRVcB5JNrq4XYU4MxSLNtxrXOt3xu79oUIyV71TMhbmIWYlzupWVfdbbUfi4WQ7hzrOppsU2G9L0qvtDI300EUCda3dR";
+const KEY =process.env.REACT_APP_STRIPE
 
 export const Pay = () => {
   const [stripeToken, setStripeToken] = useState(null);
