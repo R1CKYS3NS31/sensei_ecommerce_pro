@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/apiCalls";
 
 const Container = styled.div`
   width: 100vw;
@@ -56,11 +58,14 @@ const Link = styled.a`
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
-  const handleClick = (e)=>{
+  const handleClick = (e) => {
     // login
-    e.preventDefault()
-  }
+    e.preventDefault();
+    login(dispatch, { username, password });
+    // ricky test login
+  };
   return (
     <Container>
       <Wrapper>
@@ -72,6 +77,7 @@ export const Login = () => {
           />
           <Input
             placeholder="password"
+            type={"password"}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button onClick={handleClick}>lOGIN</Button>
