@@ -25,7 +25,7 @@ export const store = () =>
   configureStore({
     reducer: {
       cart: cartReducer,
-      user: persistReducer,
+      user: persistedReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
@@ -35,4 +35,4 @@ export const store = () =>
       }),
   });
 
-let persistor = persistStore(store);
+export let persistor = persistStore(store);
