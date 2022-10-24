@@ -73,6 +73,8 @@ export const Login = () => {
     e.preventDefault();
     login(dispatch, { username, password });
   };
+
+  console.log(error);
   return (
     <Container>
       <Wrapper>
@@ -81,11 +83,13 @@ export const Login = () => {
           <Input
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
+            required={true}
           />
           <Input
             placeholder="password"
             type={"password"}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <Button onClick={handleClick} disabled={isFetching}>
             lOGIN
