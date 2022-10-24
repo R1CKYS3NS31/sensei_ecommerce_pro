@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "'react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
 
 export const Login = () => {
@@ -13,22 +13,45 @@ export const Login = () => {
     // login
     login(dispatch, { username, password });
   };
+  console.log(
+    JSON.parse(JSON.parse(localStorage.getItem("persist:root")).currentUser)
+      .accessToken
+  );
   return (
-    <div className="">
+    <div
+      className=""
+      style={{
+        height: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <h1>Login</h1>
       <input
+        style={{ padding: "10px", marginBottom: "20px" }}
         type="text"
         name="username"
         placeholder="username"
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
+        style={{ padding: "10px", marginBottom: "20px" }}
         type="password"
         name="password"
         placeholder="password"
         onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={handleClick}>Login</button>
+      <button
+        onClick={handleClick}
+        style={{
+          padding: "10px",
+          width: "100px",
+        }}
+      >
+        Login
+      </button>
     </div>
   );
 };
