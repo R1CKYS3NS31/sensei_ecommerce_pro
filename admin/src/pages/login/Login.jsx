@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/apiCalls";
@@ -13,10 +12,8 @@ export const Login = () => {
     // login
     login(dispatch, { username, password });
   };
-  console.log(
-    JSON.parse(JSON.parse(localStorage.getItem("persist:root")).currentUser)
-      .accessToken
-  );
+ 
+  
   return (
     <div
       className=""
