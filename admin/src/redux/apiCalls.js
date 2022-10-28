@@ -2,12 +2,13 @@ import { loginFailue, loginStart, loginSuccess } from "./userRedux";
 import { BASE_URL, TOKEN } from "../utils/requestMethods";
 
 export const login = async (dispatch, user) => {
+  console.log(JSON.stringify(user));
   dispatch(loginStart());
   try {
     const res = await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
-      // headers: { "Content-Type": "application/json" },
-      headers:{token:`Bearer ${TOKEN}`},
+      headers: { "Content-Type": "application/json" },
+      // header:{token:`Bearer ${TOKEN}`},
       body: JSON.stringify(user),
     });
     const userData = await res.json();

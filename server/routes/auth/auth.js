@@ -26,9 +26,10 @@ router.post("/register", async (req, res) => {
 
 // LOGIN
 router.post("/login", async (req, res) => {
+  const user = await User.findOne({ username: await req.body.username });
+  // console.log(req.body);
+  !user && res.status(401).json("wrong (username) or password!");
   try {
-    const user = await User.findOne({ username: req.body.username });
-    !user && res.status(401).json("wrong (username) or password!");
     var decrypted = CryptoJS.AES.decrypt(user.password, process.env.PASS_SEC);
     const OriginalPassword = decrypted.toString(CryptoJS.enc.Utf8);
     OriginalPassword !== req.body.password &&

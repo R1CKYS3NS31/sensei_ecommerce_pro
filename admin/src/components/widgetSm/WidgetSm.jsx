@@ -1,7 +1,18 @@
 import "./widgetSm.css";
 import { Visibility } from "@material-ui/icons";
+import { useEffect, useState } from "react";
+import { BASE_URL } from "../../utils/requestMethods";
 
 export default function WidgetSm() {
+  const [users, setUsers] = useState([])
+  useEffect(() => {
+    const getUsers = async ()=>{
+      const res = await fetch(`${BASE_URL}/users/?new=true`)
+      console.log(await res.json());
+    }
+    getUsers()
+  }, [])
+
   return (
     <div className="widgetSm">
       <span className="widgetSmTitle">New Join Members</span>
